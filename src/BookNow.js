@@ -56,7 +56,7 @@ const FeaturedRooms = () => {
       desc: 'Experience regal charm with antique furnishings, elegant décor, and unmatched luxury designed for true royalty.',
     },
     {
-      img: '/suite2.jpg',
+      img: '/premier.jpg',
       title: 'Premier Royal Room',
       desc: 'A spacious retreat blending heritage elegance with modern comforts, offering a stay fit for kings and queens.',
     },
@@ -66,9 +66,9 @@ const FeaturedRooms = () => {
       desc: 'Perfect for business & leisure, combining sophistication with functionality in a stylish modern setup.',
     },
     {
-      img: '/suite4.jpg',
+      img: '/suite4.jpeg',
       title: 'Imperial Suite',
-      desc: 'Modern design meets exclusivity, offering premium amenities and personalized luxury for discerning guests.',
+      desc: 'Modern design meets exclusivity, offering premium amenities and personalized luxury for our guests.',
     },
     {
       img: '/suite5.jpg',
