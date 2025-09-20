@@ -1,259 +1,261 @@
-import React, { useState } from "react";
-import { Form, Button, Container, Row, Col, Card, InputGroup} from "react-bootstrap";
-import {FaUser, FaEnvelope, FaLock, FaPhone, FaCity, FaBirthdayCake, FaGoogle, FaFacebook} from "react-icons/fa"
-
-export default function HotelSignup() {
+import React, { useState } from 'react';
+const SignUp = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    phone: "",
-    city: "",
-    dob: "",
-    membership: false,
-    newsletter: false,
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    phone: '',
+    preferences: {
+      newsletters: false,
+      specialOffers: false,
+    },
   });
-
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
+    if (type === 'checkbox') {
+      setFormData((prev) => ({
+        ...prev,
+        preferences: {
+          ...prev.preferences,
+          [name]: checked,
+        },
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Signup Data:", formData);
+    alert('Thank you for registering!');
   };
-
+  const backgroundImageUrl = './featured1.png';
   return (
     <div
       style={{
-        minHeight: "100vh",
-        backgroundImage: `url("/featured-section3.jpg")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
-        position:"relative"
+        minHeight: '100vh',
+        fontFamily: "'Open Sans', sans-serif",
+        backgroundImage: `url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        padding: '3rem 1rem',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
-           <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(0,0,0,0.5)",
-        }}
-      ></div>
-      <Container style={{minHeight:"100vh" ,position:"relative", zIndex: 1}}>
-        <Row className="justify-content-center">
-          <Col md={8} lg={7}>
-            <Card
-              className="shadow-lg"
-              style={{
-                borderRadius: "20px",
-                backgroundColor: "rgba(255, 255, 255, 0.9)",
-              }}>
-
-              <Card.Body className="p-5">
-                <h2 className="text-center mb-4 fw-bold" style={{ color: "#5A4634" }}>
-                  Hotel Membership Signup
-                </h2>
-
-                <Form onSubmit={handleSubmit}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Full Name</Form.Label>
-                    <InputGroup>
-                    <InputGroup.Text><FaUser/></InputGroup.Text>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter your full name"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      required
-                      style={{ borderRadius: "12px" }}
-                    />
-                    </InputGroup>
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label>Email address</Form.Label>
-                    <InputGroup>
-                    <InputGroup.Text>
-                        <FaEnvelope />
-                      </InputGroup.Text>
-                    <Form.Control
-                      type="email"
-                      placeholder="Enter email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      style={{ borderRadius: "12px" }}
-                    />
-                    </InputGroup>
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label>Password</Form.Label>
-                    <InputGroup>
-                    <InputGroup.Text>
-                        <FaLock />
-                      </InputGroup.Text>
-                    <Form.Control
-                      type="password"
-                      placeholder="Password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      required
-                      style={{ borderRadius: "12px" }}
-                    />
-                    </InputGroup>
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label>Confirm Password</Form.Label>
-                     <InputGroup>
-                      <InputGroup.Text>
-                        <FaLock />
-                      </InputGroup.Text>
-                    <Form.Control
-                      type="password"
-                      placeholder="Re-enter password"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                      required
-                      style={{ borderRadius: "12px" }}
-                    />
-                    </InputGroup>
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label>Phone Number</Form.Label>
-                     <InputGroup>
-                      <InputGroup.Text>
-                        <FaPhone />
-                      </InputGroup.Text>
-                    <Form.Control
-                      type="tel"
-                      placeholder="Enter phone number"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      style={{ borderRadius: "12px" }}
-                    />
-                    </InputGroup>
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label>City</Form.Label>
-                    <InputGroup>
-                      <InputGroup.Text>
-                        <FaCity />
-                      </InputGroup.Text>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter your city"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleChange}
-                      style={{ borderRadius: "12px" }}
-                    /> </InputGroup>
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label>Date of Birth</Form.Label>
-                    <InputGroup>
-                     <InputGroup.Text>
-                        <FaBirthdayCake />
-                      </InputGroup.Text>
-                    <Form.Control
-                      type="date"
-                      name="dob"
-                      value={formData.dob}
-                      onChange={handleChange}
-                      style={{ borderRadius: "12px" }}
-                    /></InputGroup>
-                  </Form.Group>
-
-                  <Form.Group className="mb-2">
-                    <Form.Check
-                      type="checkbox"
-                      label="Join our Exclusive Membership Program"
-                      name="membership"
-                      checked={formData.membership}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Check
-                      type="checkbox"
-                      label="Subscribe to our Newsletter for offers"
-                      name="newsletter"
-                      checked={formData.newsletter}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-
-                  <Button
-                    variant="dark"
-                    type="submit"
-                    className="w-100 py-2 fw-bold"
-                    style={{
-                      borderRadius: "12px",
-                      backgroundColor: "#5A4634",
-                      border: "none",
-                    }}
-                  >
-                    Sign Up
-                  </Button>
-                </Form>
-                <div className="text-center my-3">
-                  <span style={{ fontWeight: "bold", color: "#5A4634" }}>OR</span>
-                </div>
-
-                {/* Social Buttons */}
-                <Button
-                  variant="light"
-                  className="w-100 mb-2 d-flex align-items-center justify-content-center"
-                  style={{ borderRadius: "12px", border: "1px solid #ccc" }}
-                >
-                  <FaGoogle style={{ marginRight: "8px", color: "#DB4437" }} />
-                  Sign up with Google
-                </Button>
-                <Button
-                  variant="primary"
-                  className="w-100 d-flex align-items-center justify-content-center"
-                  style={{ borderRadius: "12px", backgroundColor: "#3b5998", border: "none" }}
-                >
-                  <FaFacebook style={{ marginRight: "8px" }} />
-                  Sign up with Facebook
-                </Button>
-
-                <div className="text-center mt-3">
-                  <small>
-                    Already have an account?{" "}
-                    <a href="/login" className="fw-bold" style={{ color: "#5A4634" }}>
-                      Login here
-                    </a>
-                  </small>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+      <div
+        className="bg-white rounded-4 shadow p-5"
+        style={{ maxWidth: '700px', width: '100%' }}
+      >
+        {/* Logo placeholder */}
+        <div
+          className="d-flex align-items-center justify-content-center rounded-circle mb-4"
+          style={{
+            width: '80px',
+            height: '80px',
+            backgroundColor: '#b5651d', // warm brown
+            color: 'white',
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: '700',
+            fontSize: '2rem',
+            userSelect: 'none',
+            margin: '0 auto',
+          }}
+        >
+          HH
+        </div>
+        <h1
+          className="text-center mb-3"
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            color: '#7c4a00', // dark warm brown
+            fontWeight: '700',
+          }}
+        >
+          Become a Member 
+        </h1>
+        <p className="text-center text-muted mb-4">
+          Step into a world of elegance — sign up to unlock unforgettable stays
+        </p>
+        <form onSubmit={handleSubmit}>
+          {/* First and Last Name side by side */}
+          <div className="row g-3 mb-3">
+            <div className="col-md-6">
+              <label
+                htmlFor="firstName"
+                className="form-label text-dark fw-semibold"
+              >
+                First Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="firstName"
+                name="firstName"
+                placeholder="Mr. Pradeep"
+                required
+                value={formData.firstName}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="col-md-6">
+              <label
+                htmlFor="lastName"
+                className="form-label text-dark fw-semibold"
+              >
+                Last Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="lastName"
+                name="lastName"
+                placeholder="Kumar"
+                required
+                value={formData.lastName}
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+          {/* Email and Phone side by side */}
+          <div className="row g-3 mb-3">
+            <div className="col-md-6">
+              <label htmlFor="email" className="form-label text-dark fw-semibold">
+                Email Address
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                placeholder="your.email@example.com"
+                required
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="col-md-6">
+              <label htmlFor="phone" className="form-label text-dark fw-semibold">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                className="form-control"
+                id="phone"
+                name="phone"
+                placeholder="+91 98765 43210"
+                value={formData.phone}
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+          {/* Password and Confirm Password side by side */}
+          <div className="row g-3 mb-4">
+            <div className="col-md-6">
+              <label
+                htmlFor="password"
+                className="form-label text-dark fw-semibold"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required
+                value={formData.password}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="col-md-6">
+              <label
+                htmlFor="confirmPassword"
+                className="form-label text-dark fw-semibold"
+              >
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="••••••••"
+                required
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+          {/* Preferences checkboxes */}
+          <div className="mb-4">
+            <p className="fw-semibold text-dark mb-2">Preferences</p>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="newsletters"
+                name="newsletters"
+                checked={formData.preferences.newsletters}
+                onChange={handleInputChange}
+              />
+              <label className="form-check-label text-dark" htmlFor="newsletters">
+                Receive newsletters
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="specialOffers"
+                name="specialOffers"
+                checked={formData.preferences.specialOffers}
+                onChange={handleInputChange}
+              />
+              <label className="form-check-label text-dark" htmlFor="specialOffers">
+                Receive special offers
+              </label>
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="btn w-100 fw-bold"
+            style={{
+              backgroundColor: '#b5651d', // warm brown
+              color: 'white',
+              fontFamily: "'Playfair Display', serif",
+              fontSize: '1.1rem',
+              border: 'none',
+            }}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.backgroundColor = '#9a4d00')
+            }
+            onMouseOut={(e) =>
+              (e.currentTarget.style.backgroundColor = '#b5651d')
+            }
+          >
+            Create Account
+          </button>
+        </form>
+        <p className="text-center mt-4 text-muted">
+          Already have an account?{' '}
+          <a
+            href="/login"
+            className="fw-semibold"
+            style={{ color: '#b5651d', textDecoration: 'underline' }}
+          >
+            Login
+          </a>
+        </p>
+      </div>
     </div>
   );
-}
+};
+export default SignUp;
