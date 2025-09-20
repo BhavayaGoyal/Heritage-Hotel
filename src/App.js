@@ -9,7 +9,9 @@ import './App.css';
 import Login from './Login';
 import SignUp from './SignUp';
 import RoomsList from './RoomsList.jsx'
+import HallDetails from './HallDetails.jsx'
 import RoomDetail from './RoomDetail.jsx'
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
       <Route path='/signup' element={<SignUp/>}/>
       <Route path='/rooms' element={<RoomsList/>}/>
       <Route path="/rooms/:slug" element={<RoomDetail />} />
+      <Route path='/hall/:slug' element={<HallDetails/>}/>
 
     </Routes>
     </>
