@@ -33,7 +33,7 @@ const Blogs = () => {
        <Container className="py-5">
            <Row className="g-4">
             <Col md={4} sm={6} xs={12}>
-            <Card className="blog-card h-100">
+            <Card className="blog-card h-100 blog-section">
                 <Card.Img variant='top' src="/blog1.jpg"/>
                 <Card.Body>
                     <Card.Title>
