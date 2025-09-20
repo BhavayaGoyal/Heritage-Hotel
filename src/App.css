@@ -9,12 +9,7 @@ p {
 body {
   padding-top: 0;
 }
-.navbar .nav-link {
-  font-weight: 500;
-}
-.navbar .nav-link:hover {
-  color: #ffc107 !important; /* Gold on hover */
-}
+
 .hero-text {
   opacity: 0;
   background: none !important;
@@ -41,34 +36,103 @@ body {
 .custom-dropdown .dropdown-toggle {
   color: white !important;
 }
-.navbar {
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1050; /* Higher than page elements */
+.custom-navbar {
+  background: transparent !important;
+  position: absolute ;
+  top: 0 ;
+  left: 0 ;
+  width: 100% ;
+  z-index: 1050; 
+  padding: 0.8rem 2rem;
 }
 /* Remove default Bootstrap caret dark color */
-.custom-dropdown .dropdown-toggle::after {
-  border-top-color: white !important;
+.custom-dropdown .dropdown-menu {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border: none;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
-.navbar-brand {
-  font-size: 1.5rem; /* bigger logo/brand text */
-}
-.navbar-overlay {
-  position: absolute; /* or fixed for sticky */
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10; /* above hero image */
-  background: transparent;
 
+.custom-dropdown .dropdown-item {
+  color: #fff !important;
+  font-weight: 500;
 }
-.navbar-nav .nav-link {
-  font-size: 1.1rem; /* bigger menu text */
-  padding-left: 1rem;
-  padding-right: 1rem;
+
+.custom-dropdown .dropdown-item:hover {
+  background: rgba(255,255,255,0.1) !important;
+  color: #fff !important;
 }
+
+.navbar {
+  background: transparent !important;
+}
+
+/* NAVBAR CUSTOMIZATION */
+.custom-navbar {
+  background: transparent;
+  padding: 0.8rem 2rem;
+}
+
+.custom-navbar .navbar-brand img {
+  height: 70px;
+  width: 70px;
+}
+
+/* Nav Links */
+.custom-navbar .nav-link {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff !important;
+  margin: 0 0.75rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+/* Hover & Active link */
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+  color: #f5deb3 !important; /* cream shade */
+}
+
+/* Dropdown toggle caret */
+.custom-navbar .dropdown-toggle::after {
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+/* Book Now button */
+.custom-navbar .btn-book {
+  border: 2px solid #f5deb3;
+  background-color: #f5deb3;
+  color: #3b2c1a;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  margin-left: 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.custom-navbar .btn-book:hover {
+  background-color: transparent;
+  color: #f5deb3;
+}
+
+/* Login button */
+.custom-navbar .btn-login {
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  margin-left: 0.75rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.custom-navbar .btn-login:hover {
+  background: #fff;
+  color: #3b2c1a;
+}
+
 
 .stay-enjoy-section {
   padding: 80px 0;
@@ -521,4 +585,4 @@ body{
   font-family: 'Playfair Display',serif;
 }
 
-/* signup page css */
+
